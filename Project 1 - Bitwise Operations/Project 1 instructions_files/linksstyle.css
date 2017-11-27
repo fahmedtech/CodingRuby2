@@ -1,0 +1,16 @@
+body   { background-color : #F4F4FF;
+         font-family : Verdana, Arial, sans-serif;
+         font-size : 90%; }
+
+a:link { color : #000080;
+         text-decoration : none; }
+
+a:visited { color : #800080;
+         text-decoration : none; }
+
+a:active { color : #400000;
+         text-decoration : none; }
+
+a:hover { background-color : #C00000;
+          color : white;
+          text-decoration : none; }

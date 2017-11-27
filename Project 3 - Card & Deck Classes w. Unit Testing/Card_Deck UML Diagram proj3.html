@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0070)http://facweb.cs.depaul.edu/sjost/it212/uml-examples/card-deck-uml.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="">
+<link href="./Card_Deck UML Diagram proj3_files/stylepage.css" rel="stylesheet" type="text/css">
+<title>Card/Deck UML Diagram</title>
+<style type="text/css">
+.c { text-align: center; font-size: 200%; }
+</style>
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/uml-examples">To UML Examples</a>
+</p>
+
+<h2>Card/Deck UML Diagram</h2>
+
+<p>C means class method</p>
+
+<ul>
+<table>
+<tbody><tr><td>
+<table style="border-style:solid; ">
+<tbody><tr style="text-align:center"> <td><strong>Card</strong></td> </tr>
+<tr> <td><hr></td> </tr>
+<tr> <td>- @rank : Fixnum</td></tr>
+<tr> <td>- @suit : String</td></tr>
+<tr> <td>- @symbols : String[ ]</td></tr>
+<tr> <td><hr></td> </tr>
+<tr> <td>+ new(the_rank : Fixnum,&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the_suit : String) : Card</td></tr>
+<tr> <td>-&nbsp; initialize(the_rank : Fixnum,&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the_suit : String)</td></tr>
+<tr> <td>+ rank( ) : Fixnum</td></tr>
+<tr> <td>+ suit( ) : String</td></tr>
+<tr> <td>+ color( ) : String</td></tr>
+<tr> <td>+ to_s( ): String</td></tr>
+</tbody></table>
+</td>
+<td class="c">——◊</td>
+<td>
+<table style="border-style:solid; ">
+<tbody><tr> <th>Deck</th> </tr>
+<tr> <td><hr></td> </tr>
+<tr> <td>- @cards : Card[ ]</td></tr>
+<tr> <td><hr></td> </tr>
+<tr> <td>+ new( ) : Deck</td></tr>
+<tr> <td>- initialize( )</td></tr>
+<tr> <td>+ deal( ) : Card</td></tr>
+<tr> <td>+ add_to_bottom(Card : the_card)&nbsp; </td></tr>
+<tr> <td>+ add_to_top(Card : the_card)&nbsp; </td></tr>
+<tr> <td>+ count( ): Fixnum</td></tr>
+<tr> <td>+ empty?( ): Boolean</td></tr>
+<tr> <td>+ shuffle!( )</td></tr>
+<tr> <td>+ to_s( ): String</td></tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</ul>
+
+<ul type="disc">
+<li>The symbol <strong>——◊</strong> means has-a (a Deck object has 
+zero or more Card objects).
+<br>&nbsp;</li>
+
+
+</ul>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body></html>

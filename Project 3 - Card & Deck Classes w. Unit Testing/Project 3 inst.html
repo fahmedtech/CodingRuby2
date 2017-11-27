@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it212/projects/proj3.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Project 3</title>
+<link rel="stylesheet" type="text/css" href="./Project 3 inst_files/stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/projects/index.htm">To Home Page</a></p>
+
+<h2>IT 212 -- Project 3</h2>
+
+<ul type="disc">
+
+<li><b>Goal:</b> Implement and test Card and Deck classes as shown in the
+<a href="http://facweb.cs.depaul.edu/sjost/it212/uml-examples/card-deck-uml.htm">Card/Deck UML Diagram</a>.<br>&nbsp;</li>
+
+<li><strong>Details:</strong><br>&nbsp;<br>
+<ol type="1">
+<li>The ranks of the cards from lowest to highest:<br>&nbsp;<br>
+<ul>
+2&nbsp; 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 8&nbsp; 9&nbsp; 10&nbsp; J&nbsp; Q&nbsp; K&nbsp; A
+</ul><br></li>
+
+<li>The order of the suits from lowest to highest:<br>&nbsp;<br>
+<ul>
+C&nbsp; D&nbsp; H&nbsp; S &nbsp; (Club Diamond Heart Spade)
+</ul><br></li>
+
+<li>Include two test scripts test1.rb and test2.rb.<br>&nbsp;<br>
+<ol type="a">
+<li>test1.rb tests both the <span class="tt">Card</span> and <span class="tt">Deck</span> classes in the traditional way using print statements.&nbsp;Test all methods in the 
+<span class="tt">Card</span> and <span class="tt">Deck</span> classes.<br>&nbsp;</li>
+
+<li>test2.rb tests both the <span class="tt">Card</span> and <span class="tt">Deck</span> classes using the unit test framework with assert_equal methods.&nbsp;
+Write unit tests for all methods in the <span class="tt">Card</span> class, but you only have to test 
+these methods in the <span class="tt">Deck </span>class: <span class="tt">new, deal, 
+add_to_bottom, add_to_top, count, empty?</span><br>&nbsp;<br>
+
+When writing unit tests for add_to_bottom and add_to_top, you only need to check that the count of the Deck object increased by 1; you don't need to 
+check the actual contents of the Deck object after the method call.  When writing unit tests for deal, just check that the count of the Deck object
+decreased by 1 and the value of the Card object that was returned.
+</li>
+
+</ol><br></li>
+
+<li><strong>Grading:</strong>&nbsp; Functionality: 45% , Testing Completeness 
+and Correctness: 
+30%,&nbsp; Indentation: 10%, Comments: 10%.<br>
+Header at the top of each source code file with your name, project name, and 
+submission date: 5%.</li>
+</ol>
+
+<a name="proj3hints">
+<h3>Hints:</h3>
+<ol type="1">
+<li>Double check the UML diagram to see if the parameters that you are passing in to each method is correct.
+<br>&nbsp;</li>
+
+<li>Test your <span class="tt">Card</span> class completely before starting to write the 
+<span class="tt">Deck</span> class.
+<br>&nbsp;</li>
+
+<li>The bottom of the deck is index 0; the top of the deck is the maximum index (51 in the 52 card deck).
+<br>&nbsp;</li>
+
+<li>Here are three Array methods that you may want to use in your implementation 
+of the <span class="tt">Deck</span> class:<br>&nbsp;<br>
+<ol type="a">
+<li>
+Add a new card onto the top of the deck:<br>
+<ul>
+<pre>@cards.push(c)
+</pre>
+</ul>
+Here is how to create a new card with the specified rank and suit 
+and append it to the array:<br>
+<ul>
+<pre>c = Card.new(rank, suit)
+@cards &lt;&lt; c
+
+# or
+
+c = Card.new(rank, suit)
+@cards.push(c)
+
+# or shorter
+
+@cards.push(Card.new(rank, suit)
+</pre>
+</ul></li>
+
+<li>Remove a card from the top of the <span class="tt">@cards</span> array:<br>
+<ul>
+<pre>@cards.pop
+</pre>
+</ul></li>
+
+<li>Insert a card c at the bottom of the deck (before the item with index 0):<br>
+<ul>
+<pre>@cards.insert(0, c)
+</pre>
+</ul>
+When a card is inserted before index 0 or in the middle of the array, the index of each card that is greater than the insertion point
+is increased by 1 to make room for the insertion.
+<br>&nbsp;</li>
+
+<li>Shuffle the <span class="tt">Card</span> objects in the deck:<br>
+<ul>
+<pre>@cards.shuffle!
+</pre>
+</ul></li>
+</ol></li>
+
+<li>Use a double loop in the Deck#initialize method like this:<br>
+<ul>
+<pre>@cards = [ ]
+for rank in 2..14
+  for suit in ['C', 'D', 'H', 'S']
+    # create a new card with the specified rank
+    # and suit and append it to the array.   
+  end
+end </pre></ul>
+You can use the array append operator 
+&lt;&lt; or you can use Array#push.
+<br>&nbsp;</li>
+
+<li>Use a single loop to show all the cards in the Deck#to_s method:<br>
+<ul>
+<pre>output = ""
+for card in @cards
+  # Concatenate all of the cards 
+  # to the output variable
+end</pre></ul>
+Use the <span class="tt">+=</span> operator to concatenate all the cards to the output string.
+The ith card in the <span class="tt">@cards</span> array is <span class="tt">@cards[i]</span>.  You will need to get the string representation of this
+card before appending it.  Don't forget to put spaces between the cards.&nbsp; 
+The last line in the body of the <span class="tt">to_s</span> method must be<br>
+<ul>
+<pre>return output
+</pre>
+</ul>
+Make sure that you don't print anything in the to_s methods.
+<br>&nbsp;</li>
+
+<li>In the <span class="tt">initialize</span> method, define <span class="tt">@symbols</span> to be the array of possible symbols for rank shown on the card objects.
+These symbols are used in the <span class="tt">to_s</span> method.<br>
+<ul>
+<pre>@symbols = [nil, nil, '2', '3', '4', '5', '6', 
+   '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+</pre>
+</ul></li>
+
+<li>ThThe <span class="tt">Card</span> class does not have setters for rank and suit because rank and suit should be read-only;
+you can't change the rank and suit of a card after the card is created.
+<br>&nbsp;</li>
+
+<li>Cards in a new, unshuffled deck are placed in this order, bottom to top:<br>
+<ul>
+<pre>2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC AC
+2D 3D 4D 5D 6D 7D 8D 9D 10D JD QD KD AD
+2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH AH
+2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS AS
+</pre>
+</ul></li>
+
+<li>Whenever you print something, always put a new line at the end unless there is a good reason
+not to.  Including new lines at the end of your print statements makes your output more readable.
+To double space, do this:<br>
+<ul>
+<pre>print d.count, "\n\n"
+</pre></ul></li>
+
+<li>The number of parameters you pass in to the constructor call (in this case Card.new)
+must match the number of parameters of the initialize method for that class.  In the 
+case of the Card class,<br>
+<ul>
+<pre>c = Card.new(rank, suit)
+</pre></ul>
+has two inputs because the header for initialize also has two parameters:<br>
+<ul>
+<pre>def initialize(the_rank, the_suit)
+</pre>
+</ul>
+</li>
+
+<li>In you traditional test file test1.rb, do not print the return values of methods like
+Deck#add_to_top, Deck#add_to_bottom, Deck#shuffle!.  For example, for Deck#add_to_top:<br>
+<ul>
+<pre># Don't do this:
+d = Deck.new
+c = Card.new(12, 'S')
+print d.add_to_top(c), "\n"
+
+# Do this:
+d = Deck.new
+c = Card.new(12, 'S')
+d.add_to_top(c)
+print d, "\n"
+</pre></ul></li>
+
+<li>To test the initialize and to_s methods of the Deck class, do this:<br>
+<ul>
+<pre>d = Deck.new
+print d, "\n"
+</pre></ul>
+(The method Deck#initialize does not have any parameters, so Deck.new should not have
+any parameters either.)<br>&nbsp;</li>
+
+<li>Inheritance is not used for Project 3, for the first line of the Deck class:<br>
+<ul>
+<pre># Incorrect:
+class Deck &lt; Card
+
+# Correct:
+class Deck
+</pre>
+</ul>
+<ul>
+	<pre></pre>
+</ul>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+</a></li></ul></body></html>

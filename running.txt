@@ -1,0 +1,4 @@
+in order to run ruby script in command prompt
+
+>> ruby x.rb --> x is the name of the project file
+		 or it is the name of the test file.

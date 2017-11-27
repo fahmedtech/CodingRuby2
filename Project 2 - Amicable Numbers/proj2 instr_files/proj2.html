@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it212/projects/proj2.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Project 2</title>
+<link rel="stylesheet" type="text/css" href="stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/projects/index.htm">To Home Page</a></p>
+
+<h2>IT 212 -- Project 2</h2>
+
+<ul type="disc">
+
+<li><b>Goal:</b> write an application that computes all of the amicable
+numbers less than the upper bound that is read in using a gets statement.&nbsp; 
+(Use STDIN.gets if you want to be more complete.)<br>&nbsp;</li>
+
+<li>This project is designed to give you practice using structured programming
+constructs in Ruby, in particular the if..elsif..end and for constructions.
+<br>&nbsp;</li>
+
+<li>The computations will be done in the main method output will be shown by 
+printing directly to the command line with print (or STDOUT.print if you want to 
+be more complete.)<br>&nbsp;</li>
+
+<li>Two numbers a and b are amicable if the factors of a sum to b 
+and the factors of b sum to a.
+<br>&nbsp;</li>
+
+<li><b>Example:</b> The factors of 220 are 
+1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110; 
+1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 55 + 110 = 284.<br>
+The factors of 284 are 1, 2, 4, 71, 142;
+1 + 2 + 4 + 71 + 142 = 220. 
+Therefore, 220 and 284 a pair of amicable numbers.
+<br>&nbsp;</li>
+
+<li>A simpler problem is finding all the perfect numbers as shown in the 
+<a href="http://facweb.cs.depaul.edu/sjost/it212/examples.htm#perfect1">Perfect1</a> and  <a href="http://facweb.cs.depaul.edu/sjost/it212/examples.htm#perfect2">Perfect2</a> Examples.  
+You can use the sum_factors method from the Perfect2 Example to compute the sum of the factors
+of any integer.
+<br>&nbsp;</li>
+
+<li>A number is <b>perfect</b> if its factors sum to itself.  
+The two perfect numbers less than 100 are 6 and 28 because 
+6 = 1 + 2 + 3 and 28 = 1 + 2 + 4 + 7 + 14.
+<br>&nbsp;</li>
+
+<li>Modify the Perfect2 Example to find all amicable numbers less than the input value. 
+Check that it works when you enter 5000. Remember how to 
+change the string input read by STDIN.gets into an integer.<br>&nbsp;</li>
+
+<li>To check if n belongs to an amicable pair, find the sum (sum1) 
+of the factors of n.
+Then find the sum (sum2) of all the factors of sum1.  If n is equal to sum2, 
+you have found a pair of amicable numbers.
+<br>&nbsp;</li>
+
+<li>Do not print any pair of perfect numbers in your output and do not print a pair of amicable numbers more than once.
+You can satisfy these requirements by only printing the numbers n and sum1 where<br>
+<ul>
+<pre>n == sum2 &amp;&amp; n &lt; sum1 
+</pre>
+</ul></li>
+
+<a name="hints">
+<li><span class="blue">Additonal Requirement:</span><br>&nbsp;<br>
+<ul> 
+Use the sum_factors method from the Perfect Example that computes the sum of all the factors of the value
+passed to it.
+</ul></li>
+</a></ul><a name="hints">
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+</a></body></html>

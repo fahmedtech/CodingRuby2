@@ -1,0 +1,29 @@
+#Faizan Ahmed
+#10/1/2015
+#Project 3 - Card Class
+
+class Card
+	attr_reader :rank, :suit
+	
+	def initialize(the_rank, the_suit)
+		@rank = the_rank
+		@suit = the_suit
+		
+		@symbols = [nil, nil, '2', '3', '4', '5', '6', 
+   '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+   
+	end
+	
+	def color()
+		if (@suit == "C" || @suit == "S")
+			print "Black"
+		elsif (@suit == "H" || @suit == "D")
+			print "Red"
+		end	
+	end
+	
+	def to_s
+		return "#{@symbols[@rank]}, #{@suit}"
+	end
+	
+end

@@ -1,0 +1,23 @@
+
+def to_arr(word)
+	arr = []
+	word.each_char do |x|
+		arr << x
+	end
+return arr
+end
+
+
+a = "cat"
+print to_arr(a), "\n\n"
+
+def get_perm(words)
+	arr2 = []
+	words.permutation(words.length) do |y|
+		arr2 << y.join
+	end
+return arr2
+end
+
+f = to_arr("fish")
+print get_perm(f)

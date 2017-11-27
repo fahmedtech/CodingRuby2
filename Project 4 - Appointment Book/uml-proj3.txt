@@ -1,0 +1,56 @@
+Faizan Ahmed
+IT 212 - Project 3 
+UML Diagram of Classes
+
+
++--------------------------------------------------------------+
+|	         	Appointment			       |		
++--------------------------------------------------------------+
+|- @location: string					       |	
+|- @purpose: string					       |
+|- @hour: fixnum  					       |
+|- @min: fixnum						       |
++--------------------------------------------------------------+
+|- initialize(the_location :string, the_purpose :string,       |
+|	      the_hour :fixnum, the_min :fixnum)               |
+|+ C new (the_location :string, the_purpose :string,           |
+|	      the_hour :fixnum, the_min :fixnum) : Appointment |
+|+ to_s(): string                                              |
++--------------------------------------------------------------+
+				
+			      ^
+			      |
+
++--------------------------------------------------------------+
+|   		      MonthlyAppointment		       |
++--------------------------------------------------------------+
+|- @day: fixnum						       |	
++--------------------------------------------------------------+
+|- initialize(the_location :string, the_purpose :string,       |
+|	      the_day :fixnum, the_hour :fixnum, 	       |
+|	      the_min :fixnum)  			       |
+|+ C new (the_location :string, the_purpose :string,           |
+|	      the_day :fixnum, the_hour :fixnum, 	       |
+|	      the_min :fixnum)  			       |
+|+ to_s(): string 					       |
+|+ occurs_on?(the_year, the_mon, the_day)		       |
++--------------------------------------------------------------+
+				
+			      ^
+			      |
+
++--------------------------------------------------------------+
+|			OneTimeAppointment		       |
++--------------------------------------------------------------+
+|- @year: fixnum					       |
+|- @month: fixnum					       |	
++--------------------------------------------------------------+
+|- initialize(the_location :string, the_purpose :string,       |
+|	      the_year :fixnum, the_month, the_day :fixnum,    |
+|	      the_hour :fixnum, the_min :fixnum) 	       |
+|+ C new (the_location :string, the_purpose :string,           |
+|	      the_year :fixnum, the_month, the_day :fixnum,    |
+|	      the_hour :fixnum, the_min :fixnum) 	       |
+|+ to_s(): string					       |
+|+ occurs_on?(the_year, the_month, the_day)		       |
++--------------------------------------------------------------+

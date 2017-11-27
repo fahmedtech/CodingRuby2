@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it212/projects/proj1.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Project 1</title>
+<link rel="stylesheet" type="text/css" href="stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/index.htm">To Home Page</a></p>
+
+<h2>IT 212 -- Project 1</h2>
+
+<h3>Bitwise Operations</h3>
+
+<ol type="1">
+<li>Convert the integers 59 and 125 into binary and hex.
+Show your work. Call the resulting hex values a and b.
+<br>&nbsp;</li>
+
+<li>Compute the values of these Ruby Expressions:<br>
+<ul>
+<pre>a | b   a &amp; b   a ^ b
+</pre>
+</ul></li>
+
+<li>Convert the results from Part 2 to hex and decimal.
+Show your work.<br>&nbsp;</li>
+
+<li>Write a Ruby program to verify the calculations in parts 2 and 3. Use the 
+<a href="http://facweb.cs.depaul.edu/sjost/it212/examples.htm#bitwise">Bitwise Example</a> to help you.<br>&nbsp;</li>
+
+<li>The file quiz-scores.bin in the zip file <a href="http://facweb.cs.depaul.edu/sjost/it212/projects/quiz-scores.zip">quiz-scores.zip</a> contains records with three fields each:<br>&nbsp;<br>
+<table cellpadding="5" border="1">
+<tbody><tr> <th>Field Name</th> <th>Format</th> <th>Size</th> </tr>
+<tr> <td>first_name</td> <td>ASCII Code</td> <td>8 bytes</td> </tr>
+<tr> <td>student_id</td> <td>Packed Decimal</td> <td>4 digits representing 
+	decimal digits (2 bytes)</td> </tr>
+<tr style="vertical-align:top"> <td>quiz_answers</td> <td>Bit String<br>
+0 means F, 1 means T.</td> <td>5 bits with 3 padding bits (1 byte)</td> </tr>
+</tbody></table><br>
+Use the <a href="http://facweb.cs.depaul.edu/sjost/it212/examples.htm#hexdump">hex dump utility</a> to interpret the data in quiz-scores.bin.  Here is a sample hex dump 
+and interpretation of one record:<br>
+<ul>
+<pre>&gt; ruby hexdump.rb examp.bin
+00000 41 6c 69 63 65 20 20 20 12 34 68
+       A  l  i  c  e          ^R  4  h
+</pre></ul>
+You can also redirect the dump to an output text file like this:<br>
+<ul>
+<pre>&gt; ruby hexdump.rb examp.bin &gt; dump.txt
+</pre>
+</ul>
+Include this dump in your submission for Project 1.<br>&nbsp;<br>
+
+<strong>Interpretation:</strong><br>
+Field 1 (first_name): 41 6c 69 63 65 20 20 20<br>
+8 bytes: ASCII codes for Alice padded with three spaces.<br>
+Field 2 (student_id): 12 34<br>
+2 bytes: The student id 1234 which consists of 4 packed decimal digits.<br>
+Field 3 (quiz_answers): 68 = 01101000<br>
+1 byte: 01101 represents the answers to a true/false quiz F,T,T,F,T, with 3 zero bits of padding.
+</li>
+</ol>
+
+
+
+</body></html>

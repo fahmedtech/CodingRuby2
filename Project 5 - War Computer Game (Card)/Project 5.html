@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it212/projects/proj5.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Project 5</title>
+<link rel="stylesheet" type="text/css" href="./Project 5_files/stylepage.css">
+<style type="text/css">
+.nobullet { list-style-type: none }
+}
+</style>
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/projects/index.htm">To Home Page</a></p>
+
+<h2>IT 212 -- Project 5</h2>
+
+<ul type="disc">
+
+<li><b>Goal:</b> Write a computer simulation of children's card game of War.
+<br>&nbsp;</li>
+
+<li><strong>Prerequisites:</strong> &nbsp; The <span class="tt">Card</span> and 
+<span class="tt">Deck</span> classes from Project 3.<br>&nbsp;</li>
+
+<li><strong>Rules of War Card Game:</strong><br>&nbsp;<br>
+<ol type="1">
+<li>The number of players is two.
+<br>&nbsp;</li>
+<li>A newly created deck of cards is shuffled seven times.
+<br>&nbsp;</li>
+<li>Cards are dealt from this deck to each player from a standard 52 card deck to form
+two 26 card player stacks, called the downstacks. Each stack is face down on the table in front of each 
+player.
+<br>&nbsp;</li>
+<li>Each player draws the top card from his or her down stack.
+(Use the deal method of <span class="tt">DownStack</span> to obtain the card.)  The
+card with the higher rank wins. Both cards are added to the bottom
+of the winning player's down stack along with any cards in the limbo stack, as described 
+in Rule 5. Use the add_to_bottom and deal methods to move cards from the limbo 
+stack to the player's down stack like this:<br>
+<ul>
+<pre>until @limbo_stack.is_empty?
+  @player_a.add_to_bottom @limbo_stack.deal
+end
+</pre>
+</ul></li>
+
+<li>In case there is a tie for the rank, each player places the 
+card with tied rank, along with three additional cards into the
+"in limbo" stack, called the limbo stack.  Then they play again (Rules 4 and 5). <br>&nbsp;</li>
+<li>A player loses the game if he or she runs out of cards (the player's 
+down_stack becomes empty) or 5,000 plays have occurred. If the 5,000 play limit 
+is reached, the game is a draw.&nbsp; A player can run out of cards either during an 
+ordinary play (Rule 4) or 
+when supplying cards to the limbo_stack (Step 5).</li></ol><br></li>
+
+<li><strong>UML Diagram:</strong> &nbsp; Here is the <a href="http://facweb.cs.depaul.edu/sjost/it212/uml-examples/downstack-wargame.htm">DownStack/WarGame UML Diagram</a>.<br>&nbsp;</li>
+
+<li><strong>New Classes</strong><br>&nbsp;<br>
+<ol type="1">
+<li><strong>DownStack</strong><br>&nbsp;<br>
+<ul class="nobullet">
+<li>The DownStack class inherits from the Deck class.  The only difference is that intially, a 
+DownStack object is empty
+and is populated by dealing cards to it from the original deck. Override 
+the DownStack#initialize method to accomplish this. This is the only code that
+you need to define the DownStack class:<br>
+<ul>
+<pre>class DownStack &lt; Deck
+  def initialize
+    @cards = [ ]
+  end
+end
+</pre>
+</ul>
+Note that DownStack inherits Deck and the initialize method overrides Deck#initialize.
+<br>&nbsp;</li>
+
+<li>You may want to use this version of to_s in the Deck class to make the output easier to read:<br>
+<ul>
+<pre>def to_s
+  output = ""
+  count = 1
+  for card in @cards
+    output += card.to_s + " ";
+    if count % 13 == 0
+      output += "\n"
+    end
+    count += 1
+  end
+  return output;
+end
+</pre>
+</ul></li>
+</ul></li>
+<li><strong>WarGame</strong><br>&nbsp;<br>
+<ul class="nobullet">
+<li>WarGame method descriptions:<br>&nbsp;<br>
+<ol type="a">
+<li><strong>initialize</strong> &nbsp; Create the object <span class="tt">orig_deck</span> as a new
+<span class="tt">Deck</span> object. 
+(<span class="tt">orig_deck </span>is only used in the initialize method, so it can be a local 
+variable). Create the objects <span class="tt">@player_a</span>, 
+<span class="tt">@player_b,</span> and <span class="tt">@limbo_stack</span> as new 
+<span class="tt">DownStack</span> objects. Set <span class="tt">@num_plays</span> to 0.
+Shuffle orig_deck seven times, and deal 26 cards to each player (<span class="tt">@player_a</span> and 
+<span class="tt">@player_b</span>). Here is a start on the code for this method:<br>
+<ul>
+<pre>def initialize
+    
+  orig_deck = Deck.new
+  @player_a = DownStack.new
+  @player_b = DownStack.new
+  @limbo_stack = DownStack.new
+  
+  # Shuffle deck
+  (1..7).each
+    orig_deck.shuffle!
+  end
+
+  # Deal out cards to player
+  # a and player b:
+  (1..26).each
+     @player_a orig_deck.deal
+     # Same for player b.  
+  end
+end
+</pre>
+</ul></li>
+<li><strong>num_plays</strong> &nbsp; The number of plays in the game so far. 
+Getter for <span class="tt">@num_plays</span>.<br>&nbsp;</li>
+<li><strong>total_cards_ok</strong> &nbsp; Return true if the total cards in the downstacks is 52, false otherwise.&nbsp; 
+You can use this method definition:<br>
+<ul>
+<pre>def total_cards_ok
+  return (@player_a.count + @player_b.count +
+    @limbo_stack.count) == 52
+end
+</pre></ul></li>
+<li><strong>winner</strong> &nbsp; Return the winner <span class="tt">"a"</span> or 
+<span class="tt">"b"</span> if the game is over. 
+(If <span class="tt">@player_b.count == 0</span> return <span class="tt">"a"</span>; else if 
+<span class="tt">@player_a.count == 0</span> return <span class="tt">"b"</span>.)&nbsp; 
+If there is not yet a winner, return <span class="tt">nil</span>.
+<br>&nbsp;</li>
+<li><strong>play</strong> &nbsp; Complete a single play as described in Rule 4 of the Rules of War Card Game.
+Add one to <span class="tt">@num_plays</span>.<br>&nbsp;</li>
+<li><strong>finish_game</strong> &nbsp; Repeatedly call the play method until there 
+is a winner or until 5,000 plays have occurred, in which case there is a draw.
+<br>&nbsp;</li>
+<li><strong>to_s</strong> &nbsp; Print the number of plays so far, the count of the player_a downstack,
+the cards in the <span class="tt">@player_a</span> downstack, obtained from the its 
+<span class="tt">to_s</span> method, the count of the 
+<span class="tt">@player_b</span> downstack,
+the cards in the player_b downstack, obtained from the its to_s method, the count of the 
+<span class="tt">@limbo_stack</span>,
+the cards in the limbo stack downstack, obtained from the its <span class="tt">to_s</span> method.  Here is a sample return string from
+<span class="tt">WarGame#to_s</span>:<br>
+<ul>
+<pre>Number of plays: 5
+Player A Count: 24
+7C JD 9D 2H QH 10H AH 3C 4C JS 3H 5D 6C
+KH 2C QC AC 8D 2D QD 5C 10C 5H JC
+Player B Count: 22
+KD KC AD 3D 6D QS KS 10D 4D 7S 2S 8S 3S
+4H 8C 5S 9C 9S 4S 9H 6H 6S 
+Limbo Stack Count: 6
+7H AS 10S 8H 7D JH
+</pre>
+</ul>
+ </li>
+</ol><br></li>
+</ul>
+</li>
+</ol></li>
+
+<li><strong>Testing</strong><br>&nbsp;<br>
+<ol type="1">
+<li>Write traditional tests for each of the methods in the DownStack and WarGame classes.
+No unit test files are required. (The results of game play are random, so unit testing is difficult for these 
+classes.)<br>&nbsp;</li>
+
+<li>Start off with the WarGame class by writing the initialize and to_s methods.  Test them with this small script:<br>
+<ul>
+<pre>require './WarGame'
+war = WarGame.new
+print war, "\n"
+</pre>
+</ul></li>
+
+<li>When you are finished with the WarGame class, include this standalone script to test your game in general.&nbsp; Put it 
+in a file named test-script.rb so the grader can run this script.<br>
+<pre>require './WarGame.rb'
+
+war = WarGame.new
+print war, "\n"
+10.times do
+  print war, "\n"
+  war.play  
+end
+
+print "Winner NumPlays\n"
+print "====== ========\n"
+5.times do
+  war = WarGame.new
+  war.finish_game
+  print " %3s %4d\n" %
+    [war.winner, war.num_plays] 
+end
+</pre></li>
+</ol></li>
+
+<li><strong>Grading</strong><br>&nbsp;<br>
+<ul>
+Functionality: 65% &nbsp;  Proper Indentation: 10% &nbsp; Source Code Comments: 10% &nbsp; Test Script Included 10% &nbsp; Properly Submitted 5%<br>&nbsp;<br>
+To properly submit your project:<br>
+<ol type="1">
+<li>Put each class in its own file. For example, the WarGame class goes in 
+the WarGame.rb file.</li>
+<li>Put all files to submit in a single folder named proj5smith (replace 
+Smith by your last name).</li>
+<li>Zip the file in 2 to produce the zipfile proj5smith.zip, so that your 
+last name in the zip file name.</li>
+<li>Include a header with the project number, your name, and the submission date at the top of each source code file.</li>
+</ol>
+</ul></li>
+</ul>
+
+
+
+</body></html>

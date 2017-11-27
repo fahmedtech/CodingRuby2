@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it212/projects/proj4.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Project 4</title>
+<link rel="stylesheet" type="text/css" href="./Project 4_files/stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it212/projects/index.htm">To Home Page</a></p>
+
+<h2>IT 212 -- Project 4</h2>
+<h3>Appointment Book</h3>
+
+<ul type="disc">
+
+<li><strong>Goal:</strong> Define a base class Appointment and derived classes DailyAppointment, WeeklyAppointment, and OneTimeAppointment,
+<br>&nbsp;</li>
+
+<li><b>Deliverables:</b><br>&nbsp;<br>
+<ol type="1">
+<li>UML diagrams that define the classes <strong>Appointment</strong>, <strong>
+MonthlyAppointment</strong>, and <strong>OneTimeAppointment.</strong><br>
+Use the Violet software to draw the UML diagram.</li>
+<li> A unit testing class file test1.rb that tests the classes in item 1.</li>
+<li>The file test2.rb marked up with comments.</li>
+</ol><br></li>
+
+<li><strong>Requirements:</strong><br>&nbsp;<br>
+<ol type="1">
+<li>Write the UML diagram for and implement the base class <span class="tt">
+<br>
+Appointment</span>:<br>
+&nbsp;&nbsp;&nbsp; <strong>Instance variables:</strong> <span class="tt">@location:String</span>, <span class="tt">@purpose:String</span>, 
+<span class="tt">@hour:Fixnum</span>, <span class="tt">@min:Fixnum</span><br>
+&nbsp;&nbsp;&nbsp; <strong>Methods:</strong> <span class="tt">initialize : String, String, Fixnum, Fixnum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to_s</span><br>&nbsp;<br>
+
+Put comments in your <span class="tt">Appointment</span> class that 
+explains how the class works.
+<br>&nbsp;</li>
+
+<li>Write unit test code in <span class="tt">test1.rb</span> that tests all of the methods in your 
+<span class="tt">Appointment</span> class.
+<br>&nbsp;</li>
+
+<li>Write the UML diagram for and implement the derived class<span class="tt">
+<br>
+MonthlyAppointment</span>:<br>
+&nbsp;&nbsp;&nbsp; <strong>Instance variables:</strong> <span class="tt">@day:Fixnum</span><br>
+&nbsp;&nbsp;&nbsp; <strong>Methods:</strong> Setters for instance variable, <span class="tt">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; initialize : the_location, the_purpose, the_day, the_hour, 
+the_minute</span>
+<span class="tt">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; to_s</span> <br>
+&nbsp;&nbsp;&nbsp; <span class="tt">&nbsp;&nbsp; occurs_on? : the_year, 
+the_mon, the_day</span><br>&nbsp;<br>
+
+Put comments in your <span class="tt">MonthlyAppointment</span> class that 
+explains how the class works.<br>&nbsp;</li>
+
+<li>Add unit test code to <span class="tt">test1.rb</span> that tests all of the methods in your 
+<span class="tt">MonthlyAppointment</span> class.
+<br>&nbsp;</li>
+
+<li>Write the UML diagram for and implement the derived class<span class="tt">
+<br>
+OneTimeAppointment</span>:<br>
+&nbsp;&nbsp;&nbsp; <strong>Instance variables:</strong> <span class="tt">@year:Fixnum, 
+@month:Fixnum, @day:Fixnum</span><br>
+&nbsp;&nbsp;&nbsp; <strong>Methods:</strong> Setters for instance variable, <span class="tt">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; initialize : the_location, the_purpose, the_year, 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the_month, the_day, 
+the_hour, the_minute</span> 
+<span class="tt"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; to_s</span> <br>
+&nbsp;&nbsp;&nbsp; <span class="tt">&nbsp;&nbsp; occurs_on? : the_year, 
+the_mon, the_day</span><br>&nbsp;<br>
+
+Put comments in your <span class="tt">OneTimeAppointment</span> class that 
+explains how the class works.
+<br>&nbsp;</li>
+
+<li>Add unit test code to <span class="tt">test1.rb</span> that tests all of the methods in your 
+<span class="tt">OneTimeAppointment</span> class.
+<br>&nbsp;</li>
+
+<li>Translate <a href="http://facweb.cs.depaul.edu/sjost/it212/projects/proj4-pseudocode.txt">this pseudocode</a> to Ruby and write comments in the source code that explain what the code does.&nbsp; 
+Put this Ruby code into the file test2.rb. &nbsp; 
+Use <a href="http://facweb.cs.depaul.edu/sjost/it212/projects/appointments.txt"><span class="tt">appointments.txt</span></a> as the input file.
+<br>&nbsp;</li>
+
+<li>Test your code in 8 with the MonthlyAppointment and OneTimeAppointment classes, using appointments.txt as 
+input data.</li>
+
+</ol><br></li>
+
+<li><strong>Grading:</strong> UML Diagrams: 15%, Correctness: 65%, Comments: 15%, 
+Header in each file including name, project name, and submission date: 5%.</li>
+
+</ul>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+</body></html>

@@ -1,0 +1,33 @@
+#Faizan Ahmed
+#10/7/2015
+#Project 3 - Traditional Testing File
+
+require './Card.rb'
+require './Deck.rb'
+
+c = Card.new(12, 'S')
+print c, "\n"
+print c.color(), "\n"
+print c.suit(), " ", c.rank, "\n\n"
+
+# adding the card to the top of the array, index of (cards.length -1)
+deck = Deck.new
+c1 = Card.new(12, 'S')
+deck.add_to_top(c1)
+print deck, "\n"
+print deck.count, "\n"
+
+print deck.deal," ", deck.count, "\n\n"
+
+# adding the card to the bottom of the array, index of 0 (cards[0])
+c2 = Card.new(12, 'S')
+deck.add_to_bottom(c2)
+print deck, deck.count, "\n"
+
+# Checking if the deck is empty
+print deck.empty?, "\n\n"
+
+# printing a shuffled Deck of Cards
+deck2 = Deck.new
+deck2.shuffle!
+print deck2," ", deck2.count, "\n"

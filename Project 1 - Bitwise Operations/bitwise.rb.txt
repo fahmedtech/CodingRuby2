@@ -1,0 +1,44 @@
+﻿# Bitwise Example
+# Compute bitwise and, or, exclusive or, and bitwise complement of the inputs.
+
+# Hand computations:
+
+# Bitwise Or       Bitwise And       Bitwise XOr    Bitwise Complement
+# Hex    Binary    Hex    Binary    Hex    Binary
+# ====   ========  ====   ========  ====   ======== ==================
+#  82 -->01010010   82 -->01010010   82 -->01010010  82 -->01010010  
+# 107 -->01101011  107 -->01101011  107 -->01101011        --------  
+#        --------         --------         -------- -83 <--10101101
+# 123 <--01111011   66 <--01000010   57 <--00111001
+#                                                   107 -->01101011
+#                                                          --------
+#                                                  -108 -->10010100       
+
+a = 82     # You could also input 82 as 0b01010010 or 0x52
+b = 107    # You could also input 107 as as 0b01101001 or 0x69
+
+print "%02x %d %08b \n" % [a, a, a]
+
+print "%02x %d %08b \n" % [b, b, b]
+
+c = a & b
+print "%02x %d %08b \n" % [c, c, c]
+
+c = a ^ b
+print "%02x %d %08b \n" % [c, c, c]
+
+c = a | b
+print "%02x %d %08b \n" % [c, c, c]
+
+c = ~a
+print "%02x %d %08b \n" % [c, c, c]
+
+c = ~b
+print "%02x %d %08b \n" % [c, c, c]
+
+# Output:
+# 7b 123
+# 42 66
+# 39 57
+# ..fad -83
+# ..f94 -108
